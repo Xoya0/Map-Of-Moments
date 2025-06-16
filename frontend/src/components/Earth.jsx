@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
+import worldMap from '../assets/world-map.jpg';
 
 const Earth = () => {
   const meshRef = useRef();
@@ -11,7 +12,7 @@ const Earth = () => {
     }
   });
 
-  const texture = useTexture('/src/assets/world-map.jpg');
+  const texture = useTexture(worldMap);
   
 
   return (

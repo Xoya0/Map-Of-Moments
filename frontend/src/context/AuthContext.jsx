@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -18,9 +18,7 @@ export function AuthProvider({ children }) {
 
     const checkAuth = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/auth/me', {
-                withCredentials: true
-            });
+            const response = await api.get('/auth/me');
             setUser(response.data);
         } catch (error) {
             setUser(null);
@@ -38,7 +36,6 @@ export function AuthProvider({ children }) {
                     .join('\n');
                 toast.error(messages);
             } else {
-
                 toast.error(data);
             }
         } else {
@@ -49,16 +46,7 @@ export function AuthProvider({ children }) {
 
     const signup = async (email, password) => {
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/signup', 
-                { email, password },
-                { 
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                }
-            );
+            const response = await api.post('/auth/signup', { email, password });
             
             if (response.data && response.data.user) {
                 setUser(response.data.user);
@@ -75,16 +63,7 @@ export function AuthProvider({ children }) {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/login',
-                { email, password },
-                {
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                }
-            );
+            const response = await api.post('/auth/login', { email, password });
             
             if (response.data && response.data.user) {
                 setUser(response.data.user);
@@ -101,12 +80,7 @@ export function AuthProvider({ children }) {
 
     const logout = async () => {
         try {
-            await axios.post('http://localhost:8080/api/auth/logout', {}, {
-                withCredentials: true,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+            await api.post('/auth/logout');
             setUser(null);
             toast.success('Logged out successfully!');
             navigate('/auth');
