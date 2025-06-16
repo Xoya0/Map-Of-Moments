@@ -173,8 +173,8 @@ function Home() {
             
             <div>
               <h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
-              <p className="text-white text-sm">Email: info@mapofmoments.com</p>
-              <p className="text-white text-sm">Phone: +1 (555) 123-4567</p>
+              <p className="text-white text-sm">Email: dibyanshumohanty4@gmail.com</p>
+              <p className="text-white text-sm">Phone: +91 xxxxxxxxxx</p>
             </div>
             
             <div>
