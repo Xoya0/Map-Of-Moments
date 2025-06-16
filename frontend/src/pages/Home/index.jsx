@@ -16,33 +16,36 @@ function Home() {
   const { isAuthenticated, logout } = useAuth();
 
   return (
-    <div className="home-container" style={{ backgroundImage: `url(${spaceBackground})` }}>
+    <div
+      className="home-container min-h-screen flex flex-col"
+      style={{ backgroundImage: `url(${spaceBackground})` }}
+    >
       {/* Header */}
       <header className="header">
-        <div className="container mx-auto px-5 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-3 sm:px-5 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img src={mapLogo} alt="Map Of Moments Logo" className="h-10 w-10" />
             <span className="text-xl font-bold text-white">Map Of Moments</span>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {isAuthenticated ? (
-              <button 
+              <button
                 onClick={logout}
-                className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
+                className="px-3 sm:px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
                 Logout
               </button>
             ) : (
               <>
-                <button 
+                <button
                   onClick={() => navigate('/auth')}
-                  className="px-4 py-2 text-sm text-white hover:text-gray-200"
+                  className="px-3 sm:px-4 py-2 text-sm text-white hover:text-gray-200"
                 >
                   Login
                 </button>
-                <button 
+                <button
                   onClick={() => navigate('/auth')}
-                  className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="px-3 sm:px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                 >
                   Sign Up
                 </button>
@@ -53,148 +56,144 @@ function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2 hero-content p-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+      <section className="container mx-auto px-3 sm:px-4 py-10 md:py-20 flex-1 flex items-center">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full">
+          <div className="md:w-1/2 hero-content p-6 sm:p-8 mb-8 md:mb-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               Explore the World Through <span className="text-blue-400">Shared Moments</span>
             </h1>
-            <p className="text-lg text-gray-200 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8 leading-relaxed">
               Connect with travelers worldwide, discover hidden gems, and create your own journey map.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-lg font-semibold"
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <button
+                className="px-6 sm:px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-base sm:text-lg font-semibold"
                 onClick={() => navigate('/auth')}
               >
                 Get Started
               </button>
-              <button 
-                className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 text-lg font-semibold"
+              <button
+                className="px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 text-base sm:text-lg font-semibold"
                 onClick={() => navigate('/explore')}
               >
                 Explore Maps
               </button>
             </div>
           </div>
-          
-          <div className="md:w-1/2 flex justify-center" style={{ height: '500px' }}>
-            <EarthScene />
+
+          <div className="md:w-1/2 flex justify-center items-center w-full" style={{ minHeight: '260px', height: 'auto' }}>
+            <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-[400px] md:h-[400px] flex items-center justify-center">
+              <EarthScene />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Why Choose Map Of Moments?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="features-section p-6">
-              <div className="text-blue-400 text-4xl mb-4">🗺️</div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Discover Locations</h3>
-              <p className="text-gray-200">Explore new and trending places around the world with detailed insights and recommendations.</p>
+      <section className="py-10 sm:py-16">
+        <div className="container mx-auto px-3 sm:px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">Why Choose Map Of Moments?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="features-section p-5 sm:p-6">
+              <div className="text-blue-400 text-3xl sm:text-4xl mb-3 sm:mb-4">🗺️</div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white">Discover Locations</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Explore new and trending places around the world with detailed insights and recommendations.</p>
             </div>
-            
-            <div className="features-section p-6">
-              <div className="text-blue-400 text-4xl mb-4">👥</div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Connect with Others</h3>
-              <p className="text-gray-200">Join a community of travelers and share experiences with people who share your interests.</p>
+            <div className="features-section p-5 sm:p-6">
+              <div className="text-blue-400 text-3xl sm:text-4xl mb-3 sm:mb-4">👥</div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white">Connect with Others</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Join a community of travelers and share experiences with people who share your interests.</p>
             </div>
-            
-            <div className="features-section p-6">
-              <div className="text-blue-400 text-4xl mb-4">✨</div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Personalized Maps</h3>
-              <p className="text-gray-200">Create and customize your own travel maps with photos, stories, and personal insights.</p>
+            <div className="features-section p-5 sm:p-6">
+              <div className="text-blue-400 text-3xl sm:text-4xl mb-3 sm:mb-4">✨</div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white">Personalized Maps</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Create and customize your own travel maps with photos, stories, and personal insights.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Popular Users Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Meet Our Community</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="user-card p-6 text-center">
-              <div className="relative mb-6">
-                <img src={userAlice} alt="Alice Summers" className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-4 py-1 rounded-full text-sm">
+      <section className="py-10 sm:py-16">
+        <div className="container mx-auto px-3 sm:px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">Meet Our Community</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="user-card p-5 sm:p-6 text-center">
+              <div className="relative mb-4 sm:mb-6">
+                <img src={userAlice} alt="Alice Summers" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm">
                   Travel Expert
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Alice Summers</h3>
-              <p className="text-gray-200">Travel & Lifestyle Blogger</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-white">Alice Summers</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Travel & Lifestyle Blogger</p>
             </div>
-            
-            <div className="user-card p-6 text-center">
-              <div className="relative mb-6">
-                <img src={userJohn} alt="John Brown" className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-4 py-1 rounded-full text-sm">
+            <div className="user-card p-5 sm:p-6 text-center">
+              <div className="relative mb-4 sm:mb-6">
+                <img src={userJohn} alt="John Brown" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm">
                   Photo Expert
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">John Brown</h3>
-              <p className="text-gray-200">Photo Journalist</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-white">John Brown</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Photo Journalist</p>
             </div>
-            
-            <div className="user-card p-6 text-center">
-              <div className="relative mb-6">
-                <img src={userEmily} alt="Emily Chan" className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-4 py-1 rounded-full text-sm">
+            <div className="user-card p-5 sm:p-6 text-center">
+              <div className="relative mb-4 sm:mb-6">
+                <img src={userEmily} alt="Emily Chan" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto object-cover border-4 border-blue-400" />
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm">
                   Adventure Guide
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Emily Chan</h3>
-              <p className="text-gray-200">Adventure Seeker</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-white">Emily Chan</h3>
+              <p className="text-gray-200 text-sm sm:text-base">Adventure Seeker</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Trending Locations */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Trending Destinations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-10 sm:py-16">
+        <div className="container mx-auto px-3 sm:px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">Trending Destinations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="location-card overflow-hidden">
               <div className="relative">
-                <img src={marrakech} alt="Marrakech, Morocco" className="w-full h-64 object-cover" />
+                <img src={marrakech} alt="Marrakech, Morocco" className="w-full h-48 sm:h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">Marrakech</h3>
-                  <p className="text-gray-200">Morocco</p>
+                <div className="absolute bottom-0 left-0 p-4 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Marrakech</h3>
+                  <p className="text-gray-200 text-sm sm:text-base">Morocco</p>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-200">Experience the vibrant colors and bustling markets of this magical city.</p>
+              <div className="p-4 sm:p-6">
+                <p className="text-gray-200 text-sm sm:text-base">Experience the vibrant colors and bustling markets of this magical city.</p>
               </div>
             </div>
-            
             <div className="location-card overflow-hidden">
               <div className="relative">
-                <img src={santorini} alt="Santorini, Greece" className="w-full h-64 object-cover" />
+                <img src={santorini} alt="Santorini, Greece" className="w-full h-48 sm:h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">Santorini</h3>
-                  <p className="text-gray-200">Greece</p>
+                <div className="absolute bottom-0 left-0 p-4 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Santorini</h3>
+                  <p className="text-gray-200 text-sm sm:text-base">Greece</p>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-200">Discover blue domes and breathtaking sunsets in this Mediterranean paradise.</p>
+              <div className="p-4 sm:p-6">
+                <p className="text-gray-200 text-sm sm:text-base">Discover blue domes and breathtaking sunsets in this Mediterranean paradise.</p>
               </div>
             </div>
-            
             <div className="location-card overflow-hidden">
               <div className="relative">
-                <img src={tokyo} alt="Tokyo, Japan" className="w-full h-64 object-cover" />
+                <img src={tokyo} alt="Tokyo, Japan" className="w-full h-48 sm:h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">Tokyo</h3>
-                  <p className="text-gray-200">Japan</p>
+                <div className="absolute bottom-0 left-0 p-4 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Tokyo</h3>
+                  <p className="text-gray-200 text-sm sm:text-base">Japan</p>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-200">Explore the city that blends the old with the ultra-modern.</p>
+              <div className="p-4 sm:p-6">
+                <p className="text-gray-200 text-sm sm:text-base">Explore the city that blends the old with the ultra-modern.</p>
               </div>
             </div>
           </div>
@@ -202,26 +201,24 @@ function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="footer-section p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <footer className="py-8 sm:py-12">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="footer-section p-6 sm:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">About Map Of Moments</h3>
-                <p className="text-gray-200 leading-relaxed">Map Of Moments is a platform to connect travelers through shared map experiences and create lasting memories.</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">About Map Of Moments</h3>
+                <p className="text-gray-200 text-sm sm:text-base leading-relaxed">Map Of Moments is a platform to connect travelers through shared map experiences and create lasting memories.</p>
               </div>
-              
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">Contact Us</h3>
-                <div className="space-y-2">
-                  <p className="text-gray-200">Email: dibyanshumohanty4@gmail.com</p>
-                  <p className="text-gray-200">Phone: +91 xxxxxxxxxx</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">Contact Us</h3>
+                <div className="space-y-1 sm:space-y-2">
+                  <p className="text-gray-200 text-sm sm:text-base">Email: dibyanshumohanty4@gmail.com</p>
+                  <p className="text-gray-200 text-sm sm:text-base">Phone: +91 xxxxxxxxxx</p>
                 </div>
               </div>
-              
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">Follow Us</h3>
-                <div className="flex space-x-4">
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">Follow Us</h3>
+                <div className="flex space-x-3 sm:space-x-4">
                   <a href="#" className="text-white hover:text-blue-400 transition-colors">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -240,8 +237,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-12 pt-8 footer-border text-center text-gray-200">
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 footer-border text-center text-gray-200 text-xs sm:text-base">
               &copy; {new Date().getFullYear()} Map Of Moments. All rights reserved.
             </div>
           </div>
